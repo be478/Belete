@@ -1,5 +1,56 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const bookingUrl=import.meta.env.PUBLIC_BOOKING_URL;
+const bookingUrl = import.meta.env.PUBLIC_BOOKING_URL?.trim();
+const appointmentTypes = [
+  '15-Minute Introductory Call',
+  'Individual Tax Consultation',
+  'Business Tax Consultation',
+  'Bookkeeping Consultation',
+  'Accounting Consultation',
+  'IRS Notice Consultation',
+];
 ---
-<BaseLayout title="Book a Consultation | BK Accounting and Tax LLC" description="Schedule a conversation with BK Accounting and Tax LLC about tax, bookkeeping, accounting, payroll or IRS matters."><section class="page-hero"><div class="container narrow"><p class="eyebrow">Consultation</p><h1>Start With a Conversation</h1><p class="lead">Sometimes the easiest way to understand what you need is to talk it through. Tell us what is going on and we can identify an appropriate next step.</p>{bookingUrl ? <a class="button button-primary" href={bookingUrl}>Open Microsoft Bookings</a> : <div class="fallback"><strong>Online scheduling is being connected.</strong><p>For now, call <a href="tel:+12405647724">+1 240-564-7724</a> or <a href="mailto:belete@bkaccountingtax.com">email us</a> to request a consultation.</p></div>}</div></section><section class="section"><div class="container"><p class="eyebrow">Planned appointment types</p><div class="types">{['15-Minute Introductory Call','Individual Tax Consultation','Business Tax Consultation','Bookkeeping Consultation','Accounting Consultation','IRS Notice Consultation'].map(x=><div>{x}</div>)}</div></div></section></BaseLayout><style>.page-hero{padding:clamp(4rem,8vw,7rem) 0;background:var(--ivory)}.narrow{max-width:820px}.lead{font-size:1.18rem;color:var(--muted)}.fallback{margin-top:2rem;padding:1.2rem;border-left:3px solid var(--gold);background:white}.types{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.types div{padding:1.4rem;border:1px solid var(--line);font-weight:750}@media(max-width:720px){.types{grid-template-columns:1fr}}</style>
+<BaseLayout title="Book a Consultation | BK Accounting and Tax LLC" description="Schedule a conversation with BK Accounting and Tax LLC about tax, bookkeeping, accounting, payroll or IRS matters.">
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">Consultation</p>
+      <h1>Start With a Conversation</h1>
+      <p class="lead">Sometimes the easiest way to understand what you need is to talk it through. Tell us what is going on and we can identify an appropriate next step.</p>
+      {bookingUrl ? (
+        <div class="booking-actions">
+          <a class="button button-primary" href={bookingUrl} target="_blank" rel="noopener noreferrer">Open Microsoft Bookings</a>
+          <p class="booking-note">Microsoft Bookings will open in a new tab so you can choose an available appointment time.</p>
+        </div>
+      ) : (
+        <div class="fallback" role="status">
+          <strong>Online scheduling is being connected.</strong>
+          <p>For now, call <a href="tel:+12405647724">+1 240-564-7724</a> or <a href="mailto:belete@bkaccountingtax.com">email us</a> to request a consultation.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Consultation options</p>
+      <h2>Choose the Conversation That Fits Your Needs</h2>
+      <p class="section-intro">You do not need to have everything organized before reaching out. Choose the closest option and we can clarify the next step together.</p>
+      <div class="types">
+        {appointmentTypes.map((type) => <div>{type}</div>)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.page-hero{padding:clamp(4rem,8vw,7rem) 0;background:var(--ivory)}
+.narrow{max-width:820px}
+.lead{font-size:1.18rem;color:var(--muted)}
+.booking-actions{margin-top:2rem}
+.booking-note{max-width:620px;margin-top:.8rem;color:var(--muted);font-size:.92rem}
+.fallback{margin-top:2rem;padding:1.2rem;border-left:3px solid var(--gold);background:white}
+.section-intro{max-width:760px;color:var(--muted)}
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.types div{padding:1.4rem;border:1px solid var(--line);font-weight:750;background:var(--paper)}
+@media(max-width:720px){.types{grid-template-columns:1fr}}
+</style>
