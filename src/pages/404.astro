@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Page Not Found | BK Accounting and Tax LLC" description="The page you requested could not be found.">
+  <section class="page-404">
+    <div class="container narrow">
+      <p class="eyebrow">404 · Page not found</p>
+      <h1>We Couldn't Find That Page</h1>
+      <p class="lead">The link may be outdated or the page may have moved. You can return to the homepage, explore our services, or contact BK Accounting and Tax LLC for help.</p>
+      <div class="actions">
+        <a class="button button-primary" href="/">Return Home</a>
+        <a class="button button-secondary" href="/services">View Services</a>
+        <a class="button button-secondary" href="/contact">Contact BK</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+.page-404{min-height:62vh;display:grid;align-items:center;padding:clamp(4rem,10vw,8rem) 0;background:var(--ivory)}
+.narrow{max-width:820px}.lead{font-size:1.15rem;color:var(--muted);max-width:700px}.actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem}
+</style>
