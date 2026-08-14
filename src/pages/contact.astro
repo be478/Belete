@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const contactEndpoint = import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT;
+const formEnabled = Boolean(contactEndpoint);
 ---
 <BaseLayout title="Contact BK Accounting and Tax LLC" description="Contact BK Accounting and Tax LLC for tax, accounting, bookkeeping, payroll or IRS support in the DMV area.">
   <section class="page-hero">
@@ -26,18 +28,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <div class="form-panel" aria-labelledby="contact-form-title">
         <h2 id="contact-form-title">Send a General Inquiry</h2>
-        <p class="form-intro">The secure web form is not active yet. Until it is connected, please call or email us using the contact information on this page.</p>
-        <form aria-disabled="true">
-          <fieldset disabled>
-            <label>Full Name<input name="name" autocomplete="name"/></label>
-            <label>Email<input type="email" name="email" autocomplete="email"/></label>
-            <label>Phone<input type="tel" name="phone" autocomplete="tel"/></label>
-            <label>Service Needed<select name="service"><option>Not sure yet</option><option>Tax Services</option><option>Accounting</option><option>Bookkeeping</option><option>Payroll</option><option>IRS Support</option></select></label>
-            <label>Message<textarea name="message" rows="6"></textarea></label>
-          </fieldset>
-          <p class="warning">Please do not enter Social Security numbers, tax documents, banking information, passwords, or other sensitive financial information here.</p>
-          <button class="button button-primary" type="button" disabled>Secure form connection coming soon</button>
-        </form>
+        {formEnabled ? (
+          <>
+            <p class="form-intro">Use this form for general questions only. Do not include confidential tax or financial information.</p>
+            <form method="POST" action={contactEndpoint}>
+              <div class="hp" aria-hidden="true"><label>Company Website<input name="website" tabindex="-1" autocomplete="off"/></label></div>
+              <label>Full Name<input name="name" autocomplete="name" maxlength="120" required/></label>
+              <label>Email<input type="email" name="email" autocomplete="email" maxlength="180" required/></label>
+              <label>Phone<input type="tel" name="phone" autocomplete="tel" maxlength="40"/></label>
+              <label>Service Needed<select name="service"><option>Not sure yet</option><option>Tax Services</option><option>Accounting</option><option>Bookkeeping</option><option>Payroll</option><option>IRS Support</option></select></label>
+              <label>Message<textarea name="message" rows="6" maxlength="2000" required></textarea></label>
+              <p class="warning">Please do not enter Social Security numbers, tax documents, banking information, passwords, or other sensitive financial information here.</p>
+              <button class="button button-primary" type="submit">Send General Inquiry</button>
+            </form>
+          </>
+        ) : (
+          <>
+            <p class="form-intro">The secure web form is not active yet. Until it is connected, please call or email us using the contact information on this page.</p>
+            <form aria-disabled="true">
+              <fieldset disabled>
+                <label>Full Name<input name="name" autocomplete="name"/></label>
+                <label>Email<input type="email" name="email" autocomplete="email"/></label>
+                <label>Phone<input type="tel" name="phone" autocomplete="tel"/></label>
+                <label>Service Needed<select name="service"><option>Not sure yet</option><option>Tax Services</option><option>Accounting</option><option>Bookkeeping</option><option>Payroll</option><option>IRS Support</option></select></label>
+                <label>Message<textarea name="message" rows="6"></textarea></label>
+              </fieldset>
+              <p class="warning">Please do not enter Social Security numbers, tax documents, banking information, passwords, or other sensitive financial information here.</p>
+              <button class="button button-primary" type="button" disabled>Secure form connection coming soon</button>
+            </form>
+          </>
+        )}
       </div>
     </div>
   </section>
@@ -50,8 +70,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 .contact-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(2rem,7vw,6rem)}
 .form-panel{padding:clamp(1.25rem,3vw,2rem);border:1px solid var(--line);background:var(--paper)}
 .form-intro{color:var(--muted);margin-bottom:1.5rem}
-form{display:grid;gap:1rem}
-fieldset{display:grid;gap:1rem;border:0;padding:0;margin:0}
+form,fieldset{display:grid;gap:1rem}
+fieldset{border:0;padding:0;margin:0}
 fieldset[disabled]{opacity:.58}
 label{font-weight:750}
 input,select,textarea{display:block;width:100%;margin-top:.35rem;padding:.85rem;border:1px solid var(--line);background:white;font:inherit}
@@ -59,6 +79,7 @@ textarea{resize:vertical}
 .warning,.privacy-note{padding:1rem;background:var(--ivory);border-left:3px solid var(--gold);font-size:.9rem}
 .privacy-note{margin-top:2rem}
 .privacy-note p{margin-bottom:0;color:var(--muted)}
+.hp{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 button[disabled]{opacity:.7;cursor:not-allowed}
 @media(max-width:760px){.contact-grid{grid-template-columns:1fr}}
 </style>
