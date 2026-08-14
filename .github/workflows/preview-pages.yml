@@ -20,6 +20,7 @@ jobs:
     env:
       ASTRO_BASE: /Belete
       ASTRO_SITE: https://be478.github.io/Belete/
+      PUBLIC_PREVIEW_MODE: 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
