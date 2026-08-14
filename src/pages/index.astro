@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const services = [
+  ['Tax Services','Tax preparation and practical tax support for individuals and businesses.','/services/tax-services'],
+  ['Accounting Services','Financial information that helps business owners understand where they stand.','/services/accounting'],
+  ['Bookkeeping','Organized records, reconciliations, cleanup, and ongoing bookkeeping support.','/services/bookkeeping'],
+  ['Payroll','Dependable support for keeping payroll records and processes organized.','/services/payroll'],
+  ['IRS Representation','Help reviewing IRS correspondence and determining appropriate next steps.','/services/irs-representation'],
+  ['Business Financial Support','Practical financial support for small businesses that need clearer information.','/services'],
+];
+---
+<BaseLayout title="BK Accounting and Tax LLC | Accounting & Tax Services in the DMV" description="Human-centered tax, accounting, bookkeeping, payroll and IRS support for individuals and small businesses across Washington, DC, Maryland and Virginia.">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Washington, DC · Maryland · Virginia</p>
+        <h1>Accounting and Tax Guidance You Can Count On</h1>
+        <p class="lead">Managing taxes, bookkeeping, payroll, and day-to-day finances can become overwhelming quickly. We help individuals and small businesses stay organized, understand what needs attention, and make informed financial decisions.</p>
+        <div class="actions"><a class="button button-primary" href="/book-consultation">Book a Consultation</a><a class="button button-secondary" href="/services">Explore Our Services</a></div>
+      </div>
+      <aside class="trust-panel" aria-label="BK Accounting and Tax experience">
+        <p class="eyebrow">Experience that transfers</p><strong>15+ Years</strong><span>of transferable professional experience</span><hr/><strong>MSc</strong><span>Accounting & Finance</span><hr/><p>Professional knowledge, real-world experience, and personal attention.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section ivory"><div class="container narrow"><p class="eyebrow">A personal approach</p><h2>Your Finances Deserve More Than a One-Size-Fits-All Approach</h2><p>Every person and every business has a different story. Some clients need help preparing a tax return. Others need their books cleaned up, payroll organized, or support responding to an IRS notice.</p><p><strong>We start by listening.</strong> Once we understand your situation, we explain the next steps in clear language and help you move forward without unnecessary confusion.</p></div></section>
+
+  <section class="section"><div class="container"><p class="eyebrow">How we can help</p><h2>Practical Support for Your Financial Needs</h2><div class="services">{services.map(([name, text, href]) => <a class="service" href={href}><span>Service</span><h3>{name}</h3><p>{text}</p><b>Learn more →</b></a>)}</div></div></section>
+
+  <section class="section dark"><div class="container why"><div><p class="eyebrow">Why BK</p><h2>Professional Knowledge. Real-World Experience. Personal Attention.</h2></div><div><p>Good financial support is about more than preparing forms or producing reports. It starts with understanding your situation and explaining what needs attention.</p><p>Our approach is supported by more than <strong>15 years of transferable professional experience</strong> and an <strong>MSc in Accounting & Finance</strong>.</p></div></div></section>
+
+  <section class="section"><div class="container"><p class="eyebrow">Simple process</p><h2>Start With a Conversation</h2><div class="steps"><div><b>01</b><h3>Tell Us What You Need</h3><p>Share what you need help with and what is currently causing concern.</p></div><div><b>02</b><h3>We Review Your Situation</h3><p>We take time to understand your records, questions, and goals.</p></div><div><b>03</b><h3>Move Forward</h3><p>Receive practical guidance and support based on your situation.</p></div></div></div></section>
+
+  <section class="section cta"><div class="container narrow"><p class="eyebrow">We're here to help</p><h2>Ready to Make Your Accounting and Taxes Simpler?</h2><p>You do not need to have everything figured out before reaching out. Start with a conversation, and we'll help you understand the next step.</p><div class="actions"><a class="button button-primary" href="/book-consultation">Book a Consultation</a><a class="button button-secondary" href="tel:+12405647724">Call +1 240-564-7724</a></div></div></section>
+</BaseLayout>
+<style>
+.hero{padding:clamp(4.5rem,9vw,8rem) 0;background:linear-gradient(90deg,var(--paper),var(--ivory))}.hero-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(270px,.65fr);gap:clamp(2rem,7vw,7rem);align-items:center}.lead{font-size:1.18rem;max-width:760px;color:var(--muted)}.actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem}.trust-panel{border-top:3px solid var(--gold);padding:2rem;background:#fff;box-shadow:0 18px 55px rgba(40,35,25,.08)}.trust-panel strong{display:block;font-family:Georgia,serif;font-size:2.4rem;color:var(--charcoal)}.trust-panel span{display:block;color:var(--muted)}.trust-panel hr{border:0;border-top:1px solid var(--line);margin:1.4rem 0}.ivory,.cta{background:var(--ivory)}.narrow{max-width:820px}.narrow>p{font-size:1.08rem}.services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2.5rem}.service{background:var(--paper);padding:2rem;text-decoration:none;min-height:250px}.service:hover{background:var(--ivory)}.service span{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold-dark);font-weight:800}.service p{color:var(--muted)}.service b{font-size:.9rem}.dark{background:var(--charcoal);color:#e7e2d8}.dark h2{color:#fff}.dark .eyebrow{color:#d7ad58}.why{display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:start}.why p{font-size:1.08rem}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}.steps>div{border-top:1px solid var(--gold);padding-top:1.2rem}.steps b{color:var(--gold-dark)}@media(max-width:800px){.hero-grid,.why{grid-template-columns:1fr;gap:2.5rem}.services{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}}@media(max-width:520px){.services{grid-template-columns:1fr}.hero{padding-top:3.5rem}}
+</style>
