@@ -5,6 +5,8 @@ import Footer from '../components/Footer.astro';
 interface Props { title: string; description: string; }
 const { title, description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const isPreview = import.meta.env.PUBLIC_PREVIEW_MODE === 'true';
+const robotsContent = isPreview ? 'noindex,nofollow,noarchive' : 'index,follow';
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'AccountingService',
@@ -23,7 +25,7 @@ const structuredData = {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
-  <meta name="robots" content="index,follow" />
+  <meta name="robots" content={robotsContent} />
   <meta name="theme-color" content="#20201e" />
   <link rel="canonical" href={canonical} />
   <meta property="og:title" content={title} />
@@ -34,7 +36,7 @@ const structuredData = {
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  {!isPreview && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
   <title>{title}</title>
 </head>
 <body>
