@@ -1,4 +1,64 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Contact BK Accounting and Tax LLC" description="Contact BK Accounting and Tax LLC for tax, accounting, bookkeeping, payroll or IRS support in the DMV area."><section class="page-hero"><div class="container narrow"><p class="eyebrow">Contact</p><h1>Let's Talk About What You Need</h1><p class="lead">You do not need to know exactly which service you need before contacting us. Tell us what is happening, and we will help determine the best next step.</p></div></section><section class="section"><div class="container contact-grid"><div><h2>Contact BK</h2><p><strong>Phone</strong><br/><a href="tel:+12405647724">+1 240-564-7724</a></p><p><strong>Email</strong><br/><a href="mailto:belete@bkaccountingtax.com">belete@bkaccountingtax.com</a></p><p><strong>Hours</strong><br/>Monday–Friday, 9:00 AM–5:00 PM</p><p><strong>Service Area</strong><br/>Washington, DC · Maryland · Virginia</p></div><form><label>Full Name<input name="name" autocomplete="name" required/></label><label>Email<input type="email" name="email" autocomplete="email" required/></label><label>Phone<input type="tel" name="phone" autocomplete="tel"/></label><label>Service Needed<select name="service"><option>Not sure yet</option><option>Tax Services</option><option>Accounting</option><option>Bookkeeping</option><option>Payroll</option><option>IRS Support</option></select></label><label>Message<textarea name="message" rows="6" required></textarea></label><p class="warning">Please do not send Social Security numbers, tax documents, banking information, passwords, or other sensitive financial information through this form.</p><button class="button button-primary" type="button" disabled>Secure form connection coming soon</button></form></div></section></BaseLayout><style>.page-hero{padding:clamp(4rem,8vw,7rem) 0;background:var(--ivory)}.narrow{max-width:820px}.lead{font-size:1.18rem;color:var(--muted)}.contact-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(2rem,7vw,6rem)}form{display:grid;gap:1rem}label{font-weight:750}input,select,textarea{display:block;width:100%;margin-top:.35rem;padding:.85rem;border:1px solid var(--line);background:white;font:inherit}textarea{resize:vertical}.warning{padding:1rem;background:var(--ivory);border-left:3px solid var(--gold);font-size:.9rem}button[disabled]{opacity:.7;cursor:not-allowed}@media(max-width:760px){.contact-grid{grid-template-columns:1fr}}</style>
+<BaseLayout title="Contact BK Accounting and Tax LLC" description="Contact BK Accounting and Tax LLC for tax, accounting, bookkeeping, payroll or IRS support in the DMV area.">
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">Contact</p>
+      <h1>Let's Talk About What You Need</h1>
+      <p class="lead">You do not need to know exactly which service you need before contacting us. Tell us what is happening, and we will help determine the best next step.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div>
+        <h2>Contact BK</h2>
+        <p><strong>Phone</strong><br/><a href="tel:+12405647724">+1 240-564-7724</a></p>
+        <p><strong>Email</strong><br/><a href="mailto:belete@bkaccountingtax.com">belete@bkaccountingtax.com</a></p>
+        <p><strong>Hours</strong><br/>Monday–Friday, 9:00 AM–5:00 PM</p>
+        <p><strong>Service Area</strong><br/>Washington, DC · Maryland · Virginia</p>
+        <div class="privacy-note">
+          <strong>Protect your information</strong>
+          <p>Please do not email Social Security numbers, tax documents, banking information, passwords, or other sensitive financial information unless we provide a secure method for sharing them.</p>
+        </div>
+      </div>
+
+      <div class="form-panel" aria-labelledby="contact-form-title">
+        <h2 id="contact-form-title">Send a General Inquiry</h2>
+        <p class="form-intro">The secure web form is not active yet. Until it is connected, please call or email us using the contact information on this page.</p>
+        <form aria-disabled="true">
+          <fieldset disabled>
+            <label>Full Name<input name="name" autocomplete="name"/></label>
+            <label>Email<input type="email" name="email" autocomplete="email"/></label>
+            <label>Phone<input type="tel" name="phone" autocomplete="tel"/></label>
+            <label>Service Needed<select name="service"><option>Not sure yet</option><option>Tax Services</option><option>Accounting</option><option>Bookkeeping</option><option>Payroll</option><option>IRS Support</option></select></label>
+            <label>Message<textarea name="message" rows="6"></textarea></label>
+          </fieldset>
+          <p class="warning">Please do not enter Social Security numbers, tax documents, banking information, passwords, or other sensitive financial information here.</p>
+          <button class="button button-primary" type="button" disabled>Secure form connection coming soon</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.page-hero{padding:clamp(4rem,8vw,7rem) 0;background:var(--ivory)}
+.narrow{max-width:820px}
+.lead{font-size:1.18rem;color:var(--muted)}
+.contact-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(2rem,7vw,6rem)}
+.form-panel{padding:clamp(1.25rem,3vw,2rem);border:1px solid var(--line);background:var(--paper)}
+.form-intro{color:var(--muted);margin-bottom:1.5rem}
+form{display:grid;gap:1rem}
+fieldset{display:grid;gap:1rem;border:0;padding:0;margin:0}
+fieldset[disabled]{opacity:.58}
+label{font-weight:750}
+input,select,textarea{display:block;width:100%;margin-top:.35rem;padding:.85rem;border:1px solid var(--line);background:white;font:inherit}
+textarea{resize:vertical}
+.warning,.privacy-note{padding:1rem;background:var(--ivory);border-left:3px solid var(--gold);font-size:.9rem}
+.privacy-note{margin-top:2rem}
+.privacy-note p{margin-bottom:0;color:var(--muted)}
+button[disabled]{opacity:.7;cursor:not-allowed}
+@media(max-width:760px){.contact-grid{grid-template-columns:1fr}}
+</style>
