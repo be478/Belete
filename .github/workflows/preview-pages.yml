@@ -17,6 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      ASTRO_BASE: /Belete
+      ASTRO_SITE: https://be478.github.io/Belete/
     steps:
       - name: Checkout
         uses: actions/checkout@v4
